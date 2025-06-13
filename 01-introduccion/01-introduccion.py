@@ -140,10 +140,14 @@ print(len(texto3))
 
 introduccion = input("Introducción: ")
 introduccion_separada = introduccion.split(" ")
-print(introduccion_separada)
+print(introduccion_separada) # [palabra1, palabra2, ...]
 
 introduccion_por_comas = ", ".join(introduccion_separada)
-print(introduccion_por_comas)
+print(introduccion_por_comas) # palabra1, palabra2, ...
+
+# "id,nombre,cantidad,precio,origen"
+# "1,patatas,2000,1.50,murcia"
+# "2,tomates,2500,1.10,ciudad real"
 
 producto_1 = "1,patatas,2000,1.50,murcia"
 datos_producto = producto_1.split(",")
