@@ -4,3 +4,5 @@ print(a)
 print(b)
 
 # a[2] = 0
+
+# assert 8 in a
