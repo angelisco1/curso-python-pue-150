@@ -54,6 +54,7 @@ print(ultimo_usuario)
 print(usuarios_conectados)
 
 
+# Los strings son inmutables
 texto_mayus = texto.upper()
 print(texto_mayus)
 print(texto)
@@ -74,6 +75,7 @@ print(usuarios_conectados)
 
 
 matriz = [
+    # [1, 2, 3],
     [[1, 2, 3], [0, 0, 0], [9, 8, 7]],
     [4, 5, 6],
     [7, 8, 9]
@@ -83,3 +85,11 @@ print(matriz[1][2])
 print(matriz[2][1])
 print(matriz[0])
 print(matriz[0][2][0])
+
+# for filas in matriz:
+#     for columna in filas:
+#         if len(columna) > 1:
+#             for num in columna:
+#                 print(num)
+#         else:
+#             print(columna)
