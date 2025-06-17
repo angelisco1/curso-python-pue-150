@@ -15,6 +15,7 @@ num_spain = {
 
 print(f"Me puedes llamar al número {num_telefono["prefijo"]} {num_telefono["numero"]}")
 print(f"Me puedes llamar al número {otro_num_telefono["prefijo"]} {otro_num_telefono["numero"]}")
+# print(f"Me puedes llamar al número {num_spain["prefijo"]} {num_spain["numero"]}")
 print(f"Me puedes llamar al número {num_spain.get("prefijo", "+45")} {num_spain["numero"]}")
 
 otro_num_telefono["prefijo"] = "+38"

@@ -1,10 +1,9 @@
-from charset_normalizer.cd import filter_alt_coherence_matches
-
-
 def suma(n1, n2):
     return n1 + n2
 
-res = suma(1, 2)
+numero1 = 10
+numero2 = -3
+res = suma(numero1, numero2)
 print(res)
 
 def resta(n1, n2):
@@ -23,6 +22,7 @@ saludar("Ángel")
 sara = "Sara"
 saludar(sara)
 saludar()
+saludar(nombre=sara)
 
 # peticion a la API
 # usuario
@@ -106,7 +106,10 @@ for producto in productos_filtrados:
     print(f"{producto[f"nombre"]}: {producto["precio"]}€ (Stock: {producto["stock"]})")
 
 
+def fn(*args, n1=0, **kwargs):
+    print(kwargs)
 
+fn(1, 2, 3, n1=1, es_verdad=True, texto="Hola mundo")
 
 # def len(lista):
 #     return 0
