@@ -148,3 +148,20 @@ def fn0():
 fn0()
 
 print(f"Fuera: {a}")
+
+
+
+# Funciones recursivas
+# 5 * 4 * 3 * 2 * 1
+# 5! -> 5 * 4!
+# 4! -> 4 * 3!
+def factorial(num):
+    if num == 1:
+        return num
+    res_factorial_anterior = factorial(num - 1)
+    return num * res_factorial_anterior
+
+# print(factorial(1000))
+
+
+
