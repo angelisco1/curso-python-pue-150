@@ -1,5 +1,6 @@
 texto = "hola mundo"
 hola = texto[0:4]
+# hola = texto[:4]
 mundo = texto[5:10]
 print(hola)
 print(mundo)
