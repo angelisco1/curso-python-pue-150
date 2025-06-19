@@ -1,4 +1,5 @@
 import math
+import random
 
 equipos1 = ['Valencia', 'Real Madrid', 'Barcelona', 'Sevilla']
 # ----
@@ -66,20 +67,50 @@ get_enfrentamientos(equipos1)
 get_enfrentamientos(equipos2)
 
 
-# def get_enfrentamientos_list(equipos):
-#     enfrentamientos = []
-#     if len(equipos) == 0:
-#         print("Fin de la tabla")
-#     elif len(equipos) == 1:
+def get_enfrentamientos_list(equipos):
+    if len(equipos) == 0:
+        # print("Fin de la tabla")
+        return []
+    elif len(equipos) == 1:
 #         print(f"El {equipos[0]} pasa de fase automáticamente")
 #         print("Fin de la tabla")
-#     else:
-#         equipo1, equipo2, *resto = equipos
-#         print(f"{equipo1} vs {equipo2}")
-#         get_enfrentamientos(resto)
+        return [(equipos[0], None)]
+#         return [(equipos[0], )]
+    else:
+        equipo1, equipo2, *resto = equipos
+        # equipo1 = equipos.pop()
+        # equipo2 = equipos.pop()
+        # resto = equipos
+        # print(f"{equipo1} vs {equipo2}")
+        return [(equipo1, equipo2)] + get_enfrentamientos_list(resto)
 
-# enfrentamientos = get_enfrentamientos_list(equipos1)
-# print(enfrentamientos)
-#
-# enfrentamientos2 = get_enfrentamientos_list(equipos2)
-# print(enfrentamientos2)
+enfrentamientos = get_enfrentamientos_list(equipos1)
+print(enfrentamientos)
+
+enfrentamientos2 = get_enfrentamientos_list(equipos2)
+print(enfrentamientos2)
+
+
+def get_enfrentamientos_list(equipos):
+    if len(equipos) == 0:
+        # print("Fin de la tabla")
+        return []
+    elif len(equipos) == 1:
+#         print(f"El {equipos[0]} pasa de fase automáticamente")
+#         print("Fin de la tabla")
+        return [(equipos[0], None)]
+#         return [(equipos[0], )]
+    else:
+        random.shuffle(equipos)
+        equipo1, equipo2, *resto = equipos
+        # equipo1 = equipos.pop()
+        # equipo2 = equipos.pop()
+        # resto = equipos
+        # print(f"{equipo1} vs {equipo2}")
+        return [(equipo1, equipo2)] + get_enfrentamientos_list(resto)
+
+enfrentamientos = get_enfrentamientos_list(equipos1)
+print(enfrentamientos)
+
+enfrentamientos2 = get_enfrentamientos_list(equipos2)
+print(enfrentamientos2)

@@ -230,3 +230,5 @@ print(f"Puedes conducir?: {ciudadano_eeuu.lower().strip() == 'si' and int(edad) 
 print(f"Puedes beber alcohol?: {(ciudadano_eeuu.lower().strip() == 'si' and int(edad) >= 21) or (int(edad) >= 18)}")
 
 
+import mis_utils
+print(mis_utils.operaciones.suma(1, 2))

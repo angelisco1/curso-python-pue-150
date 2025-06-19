@@ -55,3 +55,13 @@ credenciales_toml = {
 
 toml_completo = {**toml, **credenciales_toml, "edad": 40}
 print(toml_completo)
+
+lista4 = [12, 13]
+lista_nueva = [*lista3, *lista4, 30, 39]
+print(lista_nueva)
+
+
+lista5 = lista4[:]
+lista5.append(30)
+print(lista5)
+print(lista4)

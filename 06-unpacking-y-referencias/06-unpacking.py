@@ -1,9 +1,17 @@
 lista_nums = [1, 2, 3, 4, 5]
+uno = lista_nums[0]
+dos = lista_nums[1]
+# ...
+cinco = lista_nums[4]
+
 print(lista_nums[0])
 print(lista_nums[1])
 print(lista_nums[2])
 print(lista_nums[3])
 print(lista_nums[4])
+
+for num1, num2 in [(1, 2), (3, 4)]:
+    print(num1, num2)
 
 
 uno, dos, tres, cuatro, cinco = lista_nums
@@ -44,6 +52,9 @@ persona = {
     "apellidos": "Falco",
     "email": "cfalco@gmail.com"
 }
+
+k_nombre, k_apellidos, k_email = persona
+print(k_nombre)
 
 nombre, apellidos, email = persona.values()
 print(nombre)

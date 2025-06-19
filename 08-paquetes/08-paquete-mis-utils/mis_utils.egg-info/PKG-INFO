@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: mis_utils
+Version: 1.0.0
+Summary: Paquete con utilidades básicas de operaciones matemáticas y traducciones
+Author: Ángel
+Author-email: angel@gmail.com
+Description-Content-Type: text/markdown
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: summary
+
+## Paquete con utilidades básicas de ...
