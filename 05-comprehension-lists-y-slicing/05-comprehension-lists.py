@@ -59,6 +59,7 @@ print(top_tres_mega)
 combates = []
 for nombre_rookie in top_tres_rookie:
     for nombre_mega in top_tres_mega:
+        # if
         combates.append(f"{nombre_rookie} vs {nombre_mega}")
 
 print(combates)

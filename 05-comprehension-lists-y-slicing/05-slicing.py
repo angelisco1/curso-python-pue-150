@@ -6,6 +6,7 @@ print(hola)
 print(mundo)
 
 # Si queremos ir hasta el final, sin poner el índice, podemos dejarlo vacío
+hola = texto[:4]
 mundo = texto[5:]
 print(mundo)
 

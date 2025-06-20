@@ -1,2 +1,2 @@
-from .operaciones import suma
+from .operaciones import suma, multiplica
 from .traductor import traduce

@@ -231,4 +231,10 @@ print(f"Puedes beber alcohol?: {(ciudadano_eeuu.lower().strip() == 'si' and int(
 
 
 import mis_utils
+# from mis_utils import suma
+# from mis_utils import suma as s
+from mis_utils import *
 print(mis_utils.operaciones.suma(1, 2))
+print(mis_utils.multiplica(1, 2))
+print(suma(1, 2))
+# print(s(1, 2))

@@ -31,3 +31,4 @@ sugus = {
 for sabor, color in sugus.items():
     # (fresa, rojo)
     print(f"{color} -> {sabor}")
+

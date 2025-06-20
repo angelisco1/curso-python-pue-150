@@ -1,3 +1,5 @@
+import copy
+
 json = {
     "nombre": "Json",
     "apellido": "Statham",
@@ -61,7 +63,31 @@ lista_nueva = [*lista3, *lista4, 30, 39]
 print(lista_nueva)
 
 
+# Copias con slicing
 lista5 = lista4[:]
 lista5.append(30)
 print(lista5)
 print(lista4)
+
+
+
+serie1 = {
+    "titulo": "Vikings",
+    "capitulos": 100,
+    "actores": [
+        toml,
+        json,
+    ]
+}
+
+serie2 = {**serie1}
+serie3 = copy.deepcopy(serie1)
+print(serie2)
+toml["edad"] = 40
+print(serie2)
+print(serie3)
+
+xml = toml.copy()
+xml["nombre"] = "XML"
+print(xml)
+print(toml)
