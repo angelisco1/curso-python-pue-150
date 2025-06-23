@@ -24,3 +24,18 @@ class Serie:
 
     def capitulos_por_ver(self):
         return self.capitulos - self.capitulos_vistos
+
+
+vikings = Serie("Vikings", 100, 97, True)
+game_of_thrones = Serie("Game of Thrones", 100, 100, True)
+
+print(vikings.capitulos_por_ver())
+print(vikings.ver_capitulo())
+print(vikings.capitulos_por_ver())
+print(vikings.esta_vista())
+
+print(game_of_thrones.capitulos_por_ver())
+print(game_of_thrones.esta_vista())
+print(game_of_thrones.ver_capitulo())
+
+
