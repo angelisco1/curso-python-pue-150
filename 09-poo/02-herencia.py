@@ -12,6 +12,7 @@ class Animal:
         print(f"{self.nombre} dice '{self.sonido}'")
 
 
+# Es un subtipo de algo
 class Perro(Animal):
     def __init__(self, nombre):
         super().__init__(nombre, "perro", "guau guau")
@@ -90,9 +91,11 @@ class Ventas(Empleado):
         self.ventas_realizadas.append(total_venta)
 
 
+# Podríamos tener las clases CEO y CTO que como ya cobran mucho, no tienen bono, por tanto su sueldo es el anual / 12
 class EmpleadoSinBono(Empleado):
     def __init__(self, nombre, salario_neto_anual):
         super().__init__(nombre, salario_neto_anual)
+
 
 
 andrea = Ventas("Andrea", 25000)

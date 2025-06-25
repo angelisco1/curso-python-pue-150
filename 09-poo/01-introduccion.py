@@ -160,7 +160,7 @@ Logger().warn("Cuidado con esa propiedad que es un string y la estás sumando a 
 Logger().error("Estás accediendo a la propiedad aaa que no existe")
 
 
-# Propiedades privadas __prop_privada = 2
+# Propiedades privadas __prop_privada = 2 -> _NombreClase<nombre_prop_privada> -> _NombreClase__prop_privada
 
 class Persona:
     def __init__(self, nombre, apellido, dni, telefono, edad, personas_de_confianza):
@@ -228,9 +228,13 @@ charly = Persona("Charly", "Falco", "00000000T", "+34 666777888", 45, ["mike"])
 # print(charly.__dni)
 # print(charly.__telefono)
 
-# print(charly.get_dni())
+# # print(charly.get_dni())
+# print(charly.dni)
 # charly.set_dni("00000001U")
+# # print(charly.get_dni())
+# print(charly.dni)
 # print(charly.get_dni())
+
 
 # Llama al getter
 print("A PARTIR DE AQUI")

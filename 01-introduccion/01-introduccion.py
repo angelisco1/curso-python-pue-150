@@ -4,6 +4,7 @@ print(8 / 3) # En Python 2 el resultado sería un 2
 print(8 // 3)
 print(2 ** 4)
 
+
 print("hola mundo" == "HOLA MUNDO")
 
 print(1 == 1 and 2 == 2 and 0 == 0)
