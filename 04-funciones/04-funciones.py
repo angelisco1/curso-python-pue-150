@@ -132,8 +132,8 @@ def fn0():
 
         def fn2():
             # Ámbito local
-            # global a
-            nonlocal a
+            global a
+            # nonlocal a
             a = 3
             print(f"FN2: {a}")
 

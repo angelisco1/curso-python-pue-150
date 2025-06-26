@@ -1,5 +1,26 @@
+import random
 from datetime import datetime, timedelta
 from abc import ABC, abstractmethod
+
+
+class EstrategiaPagos(ABC):
+    @abstractmethod
+    def pagar(self, datos_pago):
+        pass
+
+class PagoTarjeta(EstrategiaPagos):
+    def pagar(self, datos_pago):
+        num_tarjeta, fecha_caducidad, cvc = datos_pago.values()
+        # Aquí va la lógica de usar alguna API (como redsys) para realizar el pago
+        print(f"El alumno ha pagado con una tarjeta ({num_tarjeta} - {fecha_caducidad} - {cvc})")
+        return random.choice([True, False, True, True])
+
+class PagoPaypal(EstrategiaPagos):
+    def pagar(self, datos_pago):
+        email, password = datos_pago.values()
+        # Aquí va la lógica de usar la API de Paypal para realizar el pago
+        print(f"El alumno ha pagado con su cuenta de Paypal ({email} - {password})")
+        return random.choice([True, False, True, True])
 
 
 class EstrategiaInscripciones(ABC):
@@ -9,8 +30,13 @@ class EstrategiaInscripciones(ABC):
         # raise NotImplementedError
         pass
 
-    def inscribir(self, curso, alumno):
+    def inscribir(self, curso, alumno, estrategia_pagos, datos_pago):
         if self.puede_inscribirse(curso, alumno):
+            ha_pagado = estrategia_pagos.pagar(datos_pago)
+            if not ha_pagado:
+                print(f"El alumno {alumno} no se ha inscrito en el curso {curso.nombre} porque el pago ha fallado")
+                return
+
             curso.lista_alumnos.append(alumno)
             print(f"El alumno {alumno} se ha inscrito en el curso {curso.nombre}")
         else:
@@ -33,24 +59,31 @@ class InscripcionesIlimitadas(EstrategiaInscripciones):
 
 
 class Curso:
-    def __init__(self, curso_id, nombre, estrategia_inscripciones):
+    def __init__(self, curso_id, nombre, estrategia_inscripciones, estrategias_pagos):
         self.curso_id = curso_id
         self.nombre = nombre
         self.lista_alumnos = []
         self.estrategia_inscripciones = estrategia_inscripciones
+        self.estrategias_pagos = estrategias_pagos
 
-    def inscribir_alumnos(self, alumno):
+    def inscribir_alumnos(self, alumno, datos_pago):
         # if self.num_plazas > len(self.lista_alumnos) and alumno not in self.lista_alumnos:
         #     self.lista_alumnos.append(alumno)
         #     print(f"El alumno {alumno} se ha inscrito en el curso {self.nombre}")
         # else:
         #     print(f"El alumno {alumno} no se ha podido inscribir en el curso {self.nombre}")
-        self.estrategia_inscripciones.inscribir(self, alumno)
+        if datos_pago["metodo"] not in self.estrategias_pagos:
+            print(f"No puedes usar el pago por {datos_pago["metodo"]} para inscribirte en este curso")
+            return
+        estrategia_pago = self.estrategias_pagos[datos_pago["metodo"]]
+        self.estrategia_inscripciones.inscribir(self, alumno, estrategia_pago, datos_pago["detalles"])
 
 
 class CursoPresencial(Curso):
     def __init__(self, curso_id, nombre, num_plazas, direccion):
-        super().__init__(curso_id, nombre, InscripcionesLimitadas(num_plazas))
+        super().__init__(curso_id, nombre, InscripcionesLimitadas(num_plazas), {
+            "tarjeta": PagoTarjeta()
+        })
         self.direccion = direccion
         self.sesiones = [] # -> lista de fechas en las que hay clase
         self.asistencias = {} # -> diccionario con los alumnos como claves, y el valor sería una lista de fechas
@@ -94,9 +127,10 @@ angel = "Ángel"
 sara = "Sara"
 paco = "Paco"
 
-curso_python.inscribir_alumnos(angel)
-curso_python.inscribir_alumnos(sara)
-curso_python.inscribir_alumnos(paco)
+curso_python.inscribir_alumnos(angel, { "metodo": "tarjeta", "detalles": { "num_tarjeta": "1234", "cvc": 123,
+                                                                           "fecha_caducidad": "2027-12-13" } })
+curso_python.inscribir_alumnos(sara, { "metodo": "paypal", "detalles": { "email": "sara@gmail.com", "password": "1234" } })
+curso_python.inscribir_alumnos(paco, { "metodo": "paypal", "detalles": { "email": "sara@gmail.com", "password": "1234" } })
 
 curso_python.registrar_asistencia(angel, "2025-06-24")
 curso_python.registrar_asistencia(angel, "2025-06-25")
@@ -109,7 +143,10 @@ print(f"{sara} ha asistido al {curso_python.porcentaje_asistencia(sara)}% del cu
 
 class CursoOnline(Curso):
     def __init__(self, curso_id, nombre, num_plazas, plataforma):
-        super().__init__(curso_id, nombre, InscripcionesLimitadas(num_plazas))
+        super().__init__(curso_id, nombre, InscripcionesLimitadas(num_plazas), {
+            "tarjeta": PagoTarjeta(),
+            "paypal": PagoPaypal(),
+        })
         self.plataforma = plataforma
         self.sesiones = []
         self.asistencias = {}
@@ -152,8 +189,9 @@ curso_python.agregar_sesion("2025-06-25")
 angel = "Ángel"
 sara = "Sara"
 
-curso_python.inscribir_alumnos(angel)
-curso_python.inscribir_alumnos(sara)
+curso_python.inscribir_alumnos(angel, { "metodo": "tarjeta", "detalles": { "num_tarjeta": "1234", "cvc": 123,
+                                                                           "fecha_caducidad": "2027-12-13" } })
+curso_python.inscribir_alumnos(sara, { "metodo": "paypal", "detalles": { "email": "sara@gmail.com", "password": "1234" } })
 
 curso_python.registrar_asistencia(angel, "2025-06-24")
 curso_python.registrar_asistencia(angel, "2025-06-25")
@@ -164,7 +202,9 @@ curso_python.get_reporte_asistencia()
 
 class CursoEnlatado(Curso):
     def __init__(self, curso_id, nombre, plataforma, fecha_grabacion, duracion):
-        super().__init__(curso_id, nombre, InscripcionesIlimitadas())
+        super().__init__(curso_id, nombre, InscripcionesIlimitadas(), {
+            "paypal": PagoPaypal()
+        })
         self.plataforma = plataforma
         self.fecha_grabacion = fecha_grabacion
         self.duracion = duracion
@@ -188,7 +228,8 @@ curso_python = CursoEnlatado("Enlatado1", "Python", "Coursera", "12/10/2021", 50
 
 angel = "Ángel"
 sara = "Sara"
-curso_python.inscribir_alumnos(angel)
-curso_python.inscribir_alumnos(sara)
+curso_python.inscribir_alumnos(angel, { "metodo": "tarjeta", "detalles": { "num_tarjeta": "1234", "cvc": 123,
+                                                                           "fecha_caducidad": "2027-12-13" } })
+curso_python.inscribir_alumnos(sara, { "metodo": "paypal", "detalles": { "email": "sara@gmail.com", "password": "1234" } })
 
 print(curso_python.esta_obsoleto())

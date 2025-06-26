@@ -86,12 +86,18 @@ match nota:
 # mensaje_api = { "ErrorMsg": "No hay conexión." }
 mensaje_api = { "name": "Greymon", "img": "https://digimon.shadowsmith.com/img/greymon.jpg", "level": "Champion" }
 
-match mensaje_api:
-    case { "ErrorMsg": msg } if msg in ("No hay conexión", "No estás autorizado"):
-        print(f"Hay algún error con la API, revisalo: {msg}")
-    case { "ErrorMsg": msg }:
-        print(f"Hay algún error con la BBDD, revisalo: {msg}")
-    case { "name": name, "img": img, "level": level }:
-        print(f"{name} ({level}) -> Ver en {img}")
+def fn():
+    match mensaje_api:
+        case { "ErrorMsg": msg } if msg in ("No hay conexión", "No estás autorizado"):
+            print(f"Hay algún error con la API, revisalo: {msg}")
+            return 1
+        case { "ErrorMsg": msg }:
+            print(f"Hay algún error con la BBDD, revisalo: {msg}")
+            return 2
+        case { "name": name, "img": img, "level": level }:
+            print(f"{name} ({level}) -> Ver en {img}")
+            return 3
+    return 0
 
+fn()
 
