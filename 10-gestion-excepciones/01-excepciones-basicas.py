@@ -40,11 +40,11 @@ def verificar_numero_positivo(num):
         raise ValueError("El número no puede ser negativo")
     return True
 
-# try:
-#     verificar_numero_positivo(-1)
-# except ValueError:
-#     TODO: ver el objeto error
-#     # Escribe el error en el archivo log
-#     pass
+try:
+    verificar_numero_positivo(-1)
+except ValueError as e:
+    # Meter el error en el archivo de logs
+    print(e)
+    pass
 
 print("FIN")

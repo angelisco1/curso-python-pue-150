@@ -17,7 +17,7 @@ class Perro(Animal):
     def __init__(self, nombre):
         super().__init__(nombre, "perro", "guau guau")
         self.num_patas = 4
-        self.num_alas = 0
+        # self.num_alas = 0
 
     # def hacer_sonido(self):
     #     print(f"{self.nombre} dice 'guau guau'!")
