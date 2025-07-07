@@ -4,8 +4,8 @@ from flask import request_started
 URL_BASE = "http://localhost:3000"
 
 
-def get_ingredientes():
-    response = requests.get(f"{URL_BASE}/ingredientes")
+def get_ingredientes(**kwargs):
+    response = requests.get(f"{URL_BASE}/ingredientes", params=kwargs)
     print(response.status_code)
     ingredientes = response.json()
 
@@ -69,5 +69,7 @@ def delete_ingrediente(id):
 # put_ingrediente(5, "Queso mozzarela", 0.45)
 # patch_ingrediente(5, "Queso mozzarela", 0.70)
 
-post_ingrediente("Piña", 0.58)
-delete_ingrediente(6)
+# post_ingrediente("Piña", 0.58)
+# delete_ingrediente(8)
+
+get_ingredientes(_sort="precio", _order="asc")
