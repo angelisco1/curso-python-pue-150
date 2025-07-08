@@ -73,6 +73,39 @@ def patch_ingredient(id):
     return response
 
 
+# EJERCICIO: hacer el DELETE para eliminar un ingrediente dado su identificador
+# Se puede devolver un 204 o un 200
+# @app.route("/ingredients/<int:id>", methods=["DELETE"])
+# def delete_ingredient(id):
+#     global ingredients
+#
+#     ingredient = next((ingredient for ingredient in ingredients if ingredient["id"] == id), None)
+#     if not ingredient:
+#         return jsonify({ "message": f"No hemos encontrado el ingrediente con el id {id}" }), 404
+#
+#     ingredients = [ingredient for ingredient in ingredients if ingredient["id"] != id]
+#     # return jsonify(None), 204
+#     return jsonify(ingredient)
+#     # return make_response(ingredient)
+
+@app.route("/ingredients/<int:id>", methods=["DELETE"])
+def delete_ingredient(id):
+
+    for i, ing in enumerate(ingredients):
+        if ing["id"] != id:
+            continue
+
+        # del ingredients[i]
+        # ingredients.remove(ing)
+        ingrediente_eliminado = ingredients.pop(i)
+        break
+    else:
+        return jsonify({ "message": f"No hemos encontrado el ingrediente con el id {id}" }), 404
+
+    return jsonify(None), 204
+
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=3006)
 

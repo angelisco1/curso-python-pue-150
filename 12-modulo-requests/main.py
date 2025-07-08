@@ -1,5 +1,4 @@
 import requests
-from flask import request_started
 
 URL_BASE = "http://localhost:3000"
 
