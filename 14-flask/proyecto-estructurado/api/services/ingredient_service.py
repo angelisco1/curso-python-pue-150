@@ -2,11 +2,11 @@ import random
 
 from ..repositories import IngredientCSVRepository
 
-ingredients = [
-    { "id": 1, "name": "Pimiento verde", "price": 0.35 },
-    { "id": 2, "name": "Pimiento rojo", "price": 0.45 },
-    { "id": 3, "name": "Cebolla", "price": 0.5 },
-]
+# ingredients = [
+#     { "id": 1, "name": "Pimiento verde", "price": 0.35 },
+#     { "id": 2, "name": "Pimiento rojo", "price": 0.45 },
+#     { "id": 3, "name": "Cebolla", "price": 0.5 },
+# ]
 
 ingredient_repository = IngredientCSVRepository()
 
@@ -29,7 +29,8 @@ class IngredientService:
 
     @staticmethod
     def get_ingredient(id):
-        ingredient = next((ingredient for ingredient in ingredients if ingredient["id"] == id), None)
+        # ingredient = next((ingredient for ingredient in ingredients if ingredient["id"] == id), None)
+        ingredient = ingredient_repository.get_by_id(id)
         return ingredient
 
     @staticmethod
@@ -68,11 +69,12 @@ class IngredientService:
 
     @staticmethod
     def delete_ingredient(id):
-        global ingredients
-
-        ingredient = next((ingredient for ingredient in ingredients if ingredient["id"] == id), None)
-        if not ingredient:
-            return False
-
-        ingredients = [ingredient for ingredient in ingredients if ingredient["id"] != id]
-        return True
+        # global ingredients
+        #
+        # ingredient = next((ingredient for ingredient in ingredients if ingredient["id"] == id), None)
+        # if not ingredient:
+        #     return False
+        #
+        # ingredients = [ingredient for ingredient in ingredients if ingredient["id"] != id]
+        # return True
+        return ingredient_repository.delete(id)

@@ -1,45 +1,33 @@
 import csv
 
-CSV_PATH = "api/data/ingredient.csv"
+CSV_PATH = "api/data/ingredients.csv"
 
 class IngredientCSVRepository:
 
 
     def get_all(self):
-        ingredients = []
-
-        try:
-            with open(CSV_PATH, "r") as file:
-                reader = csv.DictReader(file)
-
-                for row in reader:
-                    ingredient = {
-                        "id": int(row["id"]),
-                        "name": row["name"],
-                        "price": float(row["price"]),
-                    }
-                    ingredients.append(ingredient)
-        except FileNotFoundError:
-            print("No existe el CSV con los datos")
-
-        return ingredients
+        return self.__load_ingredients()
 
 
     # EJERCICIO: rellenar este método para que lo use el servicio. Tiene que devolver 1 ingrediente o None si no lo
     #  encuentra
-    def get_by_id(self):
-        pass
+    def get_by_id(self, id):
+        ingredients = self.__load_ingredients()
+        for ing in ingredients:
+            if ing["id"] == id:
+                return ing
 
+        return None
 
     def create(self, ingredient):
-        ingredients = self.get_all()
+        ingredients = self.__load_ingredients()
         ingredients.append(ingredient)
         self.__save_ingredients(ingredients)
         return ingredient
 
 
     def update(self, id, ingredient_data):
-        ingredients = self.get_all()
+        ingredients = self.__load_ingredients()
         for i, ingredient in enumerate(ingredients):
             if ingredient["id"] != id:
                 continue
@@ -54,7 +42,7 @@ class IngredientCSVRepository:
 
 
     def partial_update(self, id, ingredient_data):
-        ingredients = self.get_all()
+        ingredients = self.__load_ingredients()
         for i, ingredient in enumerate(ingredients):
             if ingredient["id"] != id:
                 continue
@@ -73,8 +61,36 @@ class IngredientCSVRepository:
 
     # EJERCICIO: rellenar este método para que lo use el servicio. Tiene que eliminar 1 ingrediente y devolver True
     #  si lo ha eliminado y False si no lo ha eliminado
-    def delete(self):
-        pass
+    def delete(self, id):
+        ingredients = self.__load_ingredients()
+
+        ingredient = next((ingredient for ingredient in ingredients if ingredient["id"] == id), None)
+        if not ingredient:
+            return False
+
+        ingredients = [ingredient for ingredient in ingredients if ingredient["id"] != id]
+        self.__save_ingredients(ingredients)
+        return True
+
+
+    def __load_ingredients(self):
+        ingredients = []
+
+        try:
+            with open(CSV_PATH, "r") as file:
+                reader = csv.DictReader(file)
+
+                for row in reader:
+                    ingredient = {
+                        "id": int(row["id"]),
+                        "name": row["name"],
+                        "price": float(row["price"]),
+                    }
+                    ingredients.append(ingredient)
+        except FileNotFoundError:
+            print("No existe el CSV con los datos")
+
+        return ingredients
 
 
     def __save_ingredients(self, ingredients):
