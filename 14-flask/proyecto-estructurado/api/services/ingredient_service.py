@@ -1,4 +1,6 @@
-from turtledemo.sorting_animate import start_isort
+import random
+
+from ..repositories import IngredientCSVRepository
 
 ingredients = [
     { "id": 1, "name": "Pimiento verde", "price": 0.35 },
@@ -6,19 +8,24 @@ ingredients = [
     { "id": 3, "name": "Cebolla", "price": 0.5 },
 ]
 
+ingredient_repository = IngredientCSVRepository()
 
 class IngredientService:
 
     @staticmethod
     def get_ingredients():
+        ingredients = ingredient_repository.get_all()
         return ingredients
+
 
     @staticmethod
     def create_ingredient(ingredient):
-        ingredient["id"] = len(ingredients) + 1
-        ingredients.append(ingredient)
+        # ingredient["id"] = len(ingredients) + 1
+        # ingredients.append(ingredient)
+        ingredient["id"] = random.randint(0, 10000)
+        created_ingredient = ingredient_repository.create(ingredient)
 
-        return ingredient
+        return created_ingredient
 
     @staticmethod
     def get_ingredient(id):
@@ -27,33 +34,35 @@ class IngredientService:
 
     @staticmethod
     def update_ingredient(id, ingredient_data):
-        updated_ingredient = None
+        # updated_ingredient = None
 
-        for i, ing in enumerate(ingredients):
-            if ing["id"] != id:
-                continue
-
-            ingredient_data["id"] = id
-            ingredients[i] = ingredient_data
-            updated_ingredient = ingredients[i]
+        # for i, ing in enumerate(ingredients):
+        #     if ing["id"] != id:
+        #         continue
+        #
+        #     ingredient_data["id"] = id
+        #     ingredients[i] = ingredient_data
+        #     updated_ingredient = ingredients[i]
+        updated_ingredient = ingredient_repository.update(id, ingredient_data)
 
         return updated_ingredient
 
     @staticmethod
     def partial_update_ingredient(id, ingredient_data):
-        updated_ingredient = None
-
-        for i, ing in enumerate(ingredients):
-            if ing["id"] != id:
-                continue
-
-            if "price" in ingredient_data:
-                ingredients[i]["price"] = ingredient_data["price"]
-
-            if "name" in ingredient_data:
-                ingredients[i]["name"] = ingredient_data["name"]
-
-            updated_ingredient = ingredients[i]
+        # updated_ingredient = None
+        #
+        # for i, ing in enumerate(ingredients):
+        #     if ing["id"] != id:
+        #         continue
+        #
+        #     if "price" in ingredient_data:
+        #         ingredients[i]["price"] = ingredient_data["price"]
+        #
+        #     if "name" in ingredient_data:
+        #         ingredients[i]["name"] = ingredient_data["name"]
+        #
+        #     updated_ingredient = ingredients[i]
+        updated_ingredient = ingredient_repository.partial_update(id, ingredient_data)
 
         return updated_ingredient
 

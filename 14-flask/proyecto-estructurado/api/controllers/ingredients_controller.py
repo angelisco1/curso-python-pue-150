@@ -3,11 +3,11 @@ from ..services import IngredientService
 
 ingredients_bp = Blueprint("ingredients", __name__)
 
-ingredients = [
-    { "id": 1, "name": "Pimiento verde", "price": 0.25 },
-    { "id": 2, "name": "Pimiento rojo", "price": 0.25 },
-    { "id": 3, "name": "Cebolla", "price": 0.35 },
-]
+# ingredients = [
+#     { "id": 1, "name": "Pimiento verde", "price": 0.25 },
+#     { "id": 2, "name": "Pimiento rojo", "price": 0.25 },
+#     { "id": 3, "name": "Cebolla", "price": 0.35 },
+# ]
 
 
 @ingredients_bp.route("/ingredients", methods=["GET"])
@@ -51,6 +51,8 @@ def patch_ingredient(id):
     ingredient_data = request.json
 
     updated_ingredient = IngredientService.partial_update_ingredient(id, ingredient_data)
+    if not updated_ingredient:
+        return jsonify({"message": f"No hemos encontrado el ingrediente con el id {id}"}), 404
 
     response = make_response(updated_ingredient)
     return response

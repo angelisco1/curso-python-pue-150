@@ -22,6 +22,21 @@ with open("archivos/archivo1.txt", "r") as file:
     contenido = file.readline()
     print(contenido)
 
+with (open("archivos/archivo1.txt", "r") as file):
+    # Lee línea a línea
+    contenido = file.readline()
+    while contenido:
+        print(contenido)
+        contenido = file.readline()
+    print("Fin del archivo")
+
+# Con el operador morsa := (asigna el valor al mismo tiempo que se comprueba la condición)
+with (open("archivos/archivo1.txt", "r") as file):
+    # Lee línea a línea
+    while contenido := file.readline():
+        print(contenido)
+    print("Fin del archivo")
+
 
 with open("archivos/archivo1.txt", "r") as file:
     lineas = file.readlines()
@@ -29,6 +44,8 @@ with open("archivos/archivo1.txt", "r") as file:
         print(f"Nº linea {i + 1}: {linea}")
 
 
+# Escritura de archivos
+# __enter__, __exit__
 with open("archivos/archivo_creado.txt", "w") as file:
     file.write("¿Qué le dice un rio a otro?\n")
     file.write("Eh, Bro")
