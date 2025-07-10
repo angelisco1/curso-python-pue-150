@@ -1,10 +1,12 @@
+from functools import wraps
+
 from flask import request
 from werkzeug.exceptions import Unauthorized
 import jwt
 from ..constants import SECRETO
 
 def validate_token(fn_a_decorar):
-
+    @wraps(fn_a_decorar)
     def wrapper(*args, **kwargs):
 
         if "authorization" not in request.headers:
