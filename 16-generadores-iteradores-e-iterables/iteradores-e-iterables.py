@@ -1,5 +1,3 @@
-from twine.cli import list_dependencies_and_versions
-
 numeros = [1, 2, 3]
 print(numeros)
 

@@ -1,3 +1,12 @@
+def generar_hasta_3():
+    yield 1
+    yield 2
+    yield 3
+
+generador = generar_hasta_3()
+print(next(generador))
+print(next(generador))
+
 def contar_hasta(n):
     i = 0
     while i < n:

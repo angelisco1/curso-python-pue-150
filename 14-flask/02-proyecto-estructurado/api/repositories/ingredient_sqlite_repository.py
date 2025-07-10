@@ -2,7 +2,7 @@ import csv
 
 DB_PATH = "api/data/ingredients.db"
 
-class IngredientCSVRepository:
+class IngredientSQLiteRepository:
 
 
     def get_all(self):
