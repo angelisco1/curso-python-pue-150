@@ -22,6 +22,7 @@ with open("archivos/archivo1.txt", "r") as file:
     contenido = file.readline()
     print(contenido)
 
+
 with (open("archivos/archivo1.txt", "r") as file):
     # Lee línea a línea
     contenido = file.readline()

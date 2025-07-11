@@ -1,0 +1,22 @@
+WARNING:root:Un mensaje
+INFO:root:Un mensaje
+ERROR:log1:Errores everywhere...
+CRITICAL:log1:Este mensaje se autodestruira en 1 min con todo lo que haya a menos de 1KM. Corre.
+INFO:log2:Hoy hace fresquito. A ver si sigue así.
+INFO:log2:Hoy hace fresquito. A ver si sigue así.
+WARNING:root:Un mensaje
+INFO:root:Un mensaje
+ERROR:log1:Errores everywhere...
+CRITICAL:log1:Este mensaje se autodestruira en 1 min con todo lo que haya a menos de 1KM. Corre.
+INFO:log2:Hoy hace fresquito. A ver si sigue así.
+INFO:log2:Hoy hace fresquito. A ver si sigue así.
+ERROR:log1:Errores everywhere...
+CRITICAL:log1:Este mensaje se autodestruira en 1 min con todo lo que haya a menos de 1KM. Corre.
+WARNING:root:Un mensaje
+INFO:root:Un mensaje
+ERROR:log1:Errores everywhere...
+CRITICAL:log1:Este mensaje se autodestruira en 1 min con todo lo que haya a menos de 1KM. Corre.
+INFO:log2:Hoy hace fresquito. A ver si sigue así.
+INFO:log2:Hoy hace fresquito. A ver si sigue así.
+ERROR:log1:Errores everywhere...
+CRITICAL:log1:Este mensaje se autodestruira en 1 min con todo lo que haya a menos de 1KM. Corre.
