@@ -4,6 +4,7 @@ from flask import Blueprint, request, jsonify, current_app
 from werkzeug.exceptions import Unauthorized
 import jwt
 # from ..constants import SECRETO
+from ..utils import log
 
 
 usuarios_registrados = [
@@ -14,6 +15,7 @@ usuarios_registrados = [
 auth_bp = Blueprint("auth", __name__)
 
 @auth_bp.route("/login", methods=["POST"])
+@log
 def login():
     credenciales = request.json
 

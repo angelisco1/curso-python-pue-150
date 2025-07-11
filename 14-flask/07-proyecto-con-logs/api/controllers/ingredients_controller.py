@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, make_response, request
 from werkzeug.exceptions import NotFound, abort, BadRequest
 from ..repositories import IngredientCSVRepository, IngredientSQLiteRepository
 from ..services import IngredientService
-from ..utils import validate_token
+from ..utils import validate_token, log
 
 ingredients_bp = Blueprint("ingredients", __name__)
 
@@ -19,12 +19,14 @@ ingredient_service = IngredientService(ingredient_repository)
 
 
 @ingredients_bp.route("/ingredients", methods=["GET"])
+@log
 def get_ingredients():
     ingredients = ingredient_service.get_ingredients()
     return jsonify(ingredients)
 
 
 @ingredients_bp.route("/ingredients", methods=["POST"])
+@log
 @validate_token
 def post_ingredients():
     ingredient_data = request.json
@@ -38,6 +40,7 @@ def post_ingredients():
 
 
 @ingredients_bp.route("/ingredients/<int:id>")
+@log
 def get_ingredient_by_id(id):
     ingredient = ingredient_service.get_ingredient(id)
     if not ingredient:

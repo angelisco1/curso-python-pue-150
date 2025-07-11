@@ -1,0 +1,7 @@
+2025/07/11_14:06:25 - INFO - logs.py>wrapper>Nº34 - Recibida la petición a la función get_ingredient_by_id con los parámetros () {'id': 6}
+2025/07/11_14:07:39 - INFO - logs.py>wrapper>Nº33 - Recibida la petición a la función get_ingredient_by_id con los parámetros () {'id': 6}
+2025/07/11_14:09:56 - INFO - logs.py>wrapper>Nº37 - Recibida la petición a la función get_ingredient_by_id con los parámetros () {'id': 6}
+2025/07/11_14:10:31 - INFO - logs.py>wrapper>Nº38 - Recibida la petición a la función get_ingredient_by_id con los parámetros () {'id': 6}
+2025/07/11_14:12:10 - INFO - logs.py>wrapper>Nº35 - Recibida la petición a la función get_ingredient_by_id con los parámetros args=() kwargs={'id': 6} body=None
+2025/07/11_14:13:13 - INFO - logs.py>wrapper>Nº35 - Recibida la petición a la función post_ingredients con los parámetros args=() kwargs={} body={'name': 'Lechuga', 'price': 0.55}
+2025/07/11_14:14:15 - INFO - logs.py>wrapper>Nº35 - Recibida la petición a la función login con los parámetros args=() kwargs={} body={'email': 'cfalco@gmail.com', 'password': '1234'}
