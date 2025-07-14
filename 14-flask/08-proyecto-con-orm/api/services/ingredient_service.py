@@ -1,4 +1,5 @@
 import random
+from ..models import Ingredient
 
 # from ..repositories import IngredientCSVRepository, IngredientSQLiteRepository
 from ..interfaces import IngredientRepository
@@ -12,6 +13,7 @@ from ..interfaces import IngredientRepository
 # ingredient_repository = IngredientCSVRepository()
 # ingredient_repository = IngredientSQLiteRepository()
 
+
 class IngredientService:
 
     def __init__(self, repository: IngredientRepository):
@@ -19,7 +21,10 @@ class IngredientService:
 
 
     def get_ingredients(self):
-        ingredients = self.__ingredient_repository.get_all()
+        # ingredients = self.__ingredient_repository.get_all()
+        ingredients = Ingredient.all()
+        # print(ingredients)
+
         return ingredients
 
 
@@ -27,6 +32,9 @@ class IngredientService:
         # ingredient["id"] = len(ingredients) + 1
         # ingredients.append(ingredient)
         created_ingredient = self.__ingredient_repository.create(ingredient)
+
+        # ing = Ingredient(**ingredient)
+        # ing.save()
 
         return created_ingredient
 
@@ -50,7 +58,6 @@ class IngredientService:
         updated_ingredient = self.__ingredient_repository.update(id, ingredient_data)
 
         return updated_ingredient
-
 
     def partial_update_ingredient(self, id, ingredient_data):
         # updated_ingredient = None

@@ -1,6 +1,5 @@
 import csv
 import os
-import random
 from flask import current_app
 from ..interfaces import IngredientRepository
 
@@ -25,7 +24,6 @@ class IngredientCSVRepository(IngredientRepository):
 
     def create(self, ingredient):
         ingredients = self.__load_ingredients()
-        ingredient["id"] = random.randint(0, 10000)
         ingredients.append(ingredient)
         self.__save_ingredients(ingredients)
         return ingredient

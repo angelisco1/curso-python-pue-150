@@ -1,0 +1,1 @@
+from .ingredient_model import Ingredient

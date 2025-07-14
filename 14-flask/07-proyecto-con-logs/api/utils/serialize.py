@@ -5,7 +5,6 @@ import logging
 from functools import wraps
 from flask import request
 
-
 logger = logging.getLogger("api.utils.logs")
 
 formato1 = logging.Formatter(
@@ -24,19 +23,19 @@ handler2.setFormatter(formato1)
 logger.addHandler(handler2)
 logger.setLevel(logging.INFO)
 
-def log(fn_a_decorar):
 
-    @wraps(fn_a_decorar)
-    def wrapper(*args, **kwargs):
-        # body = request.json
-        body = request.get_json(silent=True)
+def serialize(clase):
+    def decorador(fn_a_decorar):
+        @wraps(fn_a_decorar)
+        def wrapper(*args, **kwargs):
 
-        logger.info(f"Recibida la petición {request.method} {request.path} con body={body}, a la función"
-                    f" {fn_a_decorar.__name__} con los parámetros args={args} kwargs={kwargs}")
+            body = request.get_json(silent=True)
+            request.body = clase.from_dict(body)
 
-        return fn_a_decorar(*args, **kwargs)
+            return fn_a_decorar(*args, **kwargs)
 
-    return wrapper
+        return wrapper
+    return decorador
 
 
 

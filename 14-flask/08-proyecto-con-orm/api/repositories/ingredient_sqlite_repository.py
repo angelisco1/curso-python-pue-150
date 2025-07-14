@@ -50,25 +50,18 @@ class IngredientSQLiteRepository(IngredientRepository):
 
         cursor = conn.cursor()
         cursor.execute("INSERT INTO ingredients (name, price) VALUES (?, ?)", (
-            # ingredient["name"],
-            # ingredient["price"]
-            ingredient.name,
-            ingredient.price,
+            ingredient["name"],
+            ingredient["price"]
         ))
 
         conn.commit()
 
         created_id = cursor.lastrowid
-        # ingredient["id"] = created_id
-        new_ingredient = {
-            "id": created_id,
-            "name": ingredient.name,
-            "price": ingredient.price,
-        }
+        ingredient["id"] = created_id
 
         conn.close()
 
-        return new_ingredient
+        return ingredient
 
 
     def update(self, id, ingredient_data):

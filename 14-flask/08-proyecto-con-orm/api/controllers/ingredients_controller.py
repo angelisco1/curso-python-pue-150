@@ -23,7 +23,10 @@ ingredient_service = IngredientService(ingredient_repository)
 @log
 def get_ingredients():
     ingredients = ingredient_service.get_ingredients()
-    return jsonify(ingredients)
+    serializados = []
+    for ing in ingredients:
+        serializados.append(ing.to_dict())
+    return jsonify(serializados)
 
 
 ################### TODO:
