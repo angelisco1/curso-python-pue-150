@@ -3,7 +3,7 @@ b = [1, 2, 3]
 c = a
 
 print(a == b) # True
-print(a == c) # False
+print(a == c) # True
 
 print(a is b)
 print(b is c)

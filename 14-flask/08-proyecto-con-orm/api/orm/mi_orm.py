@@ -117,6 +117,11 @@ class Model(metaclass=MetaModel):
         cls.__execute_sql(sql)
 
 
+    # EJERCICIO: hacer el método where para buscar por id el ingrediente
+    def where(self, id):
+        pass
+
+
     @classmethod
     def __execute_sql(cls, sql, params=None):
         # conn = sqlite3.connect("pruebas.db")

@@ -31,7 +31,9 @@ class IngredientService:
     def create_ingredient(self, ingredient):
         # ingredient["id"] = len(ingredients) + 1
         # ingredients.append(ingredient)
-        created_ingredient = self.__ingredient_repository.create(ingredient)
+        # created_ingredient = self.__ingredient_repository.create(ingredient)
+        new_ingredient = Ingredient(name=ingredient.name, price=ingredient.price)
+        created_ingredient = new_ingredient.save()
 
         # ing = Ingredient(**ingredient)
         # ing.save()

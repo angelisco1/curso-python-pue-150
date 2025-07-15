@@ -1,5 +1,3 @@
-
-
 class MiMetaclase(type):
     def __new__(cls, name, bases, attrs):
         print(f"Creando la clase {name} con los atributos {attrs}")

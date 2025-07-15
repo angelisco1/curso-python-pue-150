@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, make_response, request
 from werkzeug.exceptions import NotFound, abort, BadRequest
 from ..repositories import IngredientCSVRepository, IngredientSQLiteRepository
 from ..services import IngredientService
-from ..utils import validate_token, log, serialize
+from ..utils import validate_token, log, serialize, Serializable
 
 ingredients_bp = Blueprint("ingredients", __name__)
 
@@ -29,42 +29,6 @@ def get_ingredients():
     return jsonify(serializados)
 
 
-################### TODO:
-# MOVER EL SERIABLIZABLE Y EL POSTREQUESTBODY A OTRO SITIO
-################### TODO:
-
-class Serializable:
-    def to_dict(self):
-        return {attr: getattr(self, attr) for attr in self.__annotations__}
-
-    def to_json(self):
-        return json.dumps(self.to_dict())
-
-    @classmethod
-    def from_dict(cls, data):
-        print(f"DATA: {data}")
-        diccionario = {}
-        for attr, tipo in cls.__annotations__.items():
-            print(f"{attr} del tipo: {tipo}")
-            valor = data.get(attr)
-
-            if tipo == int and isinstance(valor, str) and valor.isdigit():
-                diccionario[attr] = int(valor)
-            elif tipo == float and isinstance(valor, str):
-                diccionario[attr] = float(valor)
-            else:
-                diccionario[attr] = tipo(valor)
-
-
-        # Ingredient(id=123, name="Pepino", price=0.45)
-        return cls(**diccionario)
-
-
-    @classmethod
-    def from_json(cls, data_json):
-        data_dict = json.loads(data_json)
-        return cls.from_dict(data_dict)
-
 class PostRequestBody(Serializable):
     name: str
     price: float
@@ -79,7 +43,7 @@ class PostRequestBody(Serializable):
 
 @ingredients_bp.route("/ingredients", methods=["POST"])
 @log
-@validate_token
+# @validate_token
 @serialize(PostRequestBody)
 def post_ingredients():
     ingredient_data = request.json
@@ -94,7 +58,7 @@ def post_ingredients():
         raise BadRequest(f"Tienes que enviar los campos name y price")
 
     ingredient = ingredient_service.create_ingredient(ingredient_data)
-    return jsonify(ingredient), 201, {"X-Custom-Header": "patata"}
+    return jsonify(ingredient.to_dict()), 201, {"X-Custom-Header": "patata"}
 
 
 @ingredients_bp.route("/ingredients/<int:id>")
@@ -109,7 +73,7 @@ def get_ingredient_by_id(id):
 
 
 @ingredients_bp.route("/ingredients/<int:id>", methods=["PUT"])
-@validate_token
+# @validate_token
 def put_ingredient(id):
     ingredient = request.json
 
@@ -129,7 +93,7 @@ def put_ingredient(id):
 
 
 @ingredients_bp.route("/ingredients/<int:id>", methods=["PATCH"])
-@validate_token
+# @validate_token
 def patch_ingredient(id):
     ingredient_data = request.json
 
@@ -143,7 +107,7 @@ def patch_ingredient(id):
 
 
 @ingredients_bp.route("/ingredients/<int:id>", methods=["DELETE"])
-@validate_token
+# @validate_token
 def delete_ingredient(id):
 
     deleted = ingredient_service.delete_ingredient(id)

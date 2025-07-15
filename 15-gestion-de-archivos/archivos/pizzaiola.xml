@@ -1,0 +1,26 @@
+<pizza>
+  <name>Pizzaiola</name>
+  <price currency="EUR">6.95</price>
+  <ingredients>
+    <ingredient>
+      <id>1</id>
+      <name>Ajo</name>
+      <price currency="EUR">0.15</price>
+    </ingredient>
+    <ingredient>
+      <id>2</id>
+      <name>Champiñon</name>
+      <price currency="EUR">1.25</price>
+    </ingredient>
+    <ingredient>
+      <id>3</id>
+      <name>Queso</name>
+      <price currency="EUR">0.75</price>
+    </ingredient>
+    <ingredient>
+      <id>4</id>
+      <name>Tomate</name>
+      <price currency="EUR">1.0</price>
+    </ingredient>
+  </ingredients>
+</pizza>

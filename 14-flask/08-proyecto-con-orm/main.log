@@ -28,3 +28,11 @@
 2025/07/14_14:02:08 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
 2025/07/14_14:02:40 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
 2025/07/14_14:02:40 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
+2025/07/15_09:40:47 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
+2025/07/15_09:40:47 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
+2025/07/15_09:41:06 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Aguacate', 'price': 0.7}, a la función post_ingredients con los parámetros args=() kwargs={}
+2025/07/15_09:41:06 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Aguacate', 'price': 0.7}, a la función post_ingredients con los parámetros args=() kwargs={}
+2025/07/15_09:41:42 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Aguacate', 'price': 0.7}, a la función post_ingredients con los parámetros args=() kwargs={}
+2025/07/15_09:41:42 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Aguacate', 'price': 0.7}, a la función post_ingredients con los parámetros args=() kwargs={}
+2025/07/15_09:41:50 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
+2025/07/15_09:41:50 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
