@@ -22,6 +22,11 @@ class PagoPaypal(EstrategiaPagos):
         print(f"El alumno ha pagado con su cuenta de Paypal ({email} - {password})")
         return random.choice([True, False, True, True])
 
+class PagoEfectivo(EstrategiaPagos):
+    def pagar(self):
+        print(f"El alumno ha pagado en efectivo")
+        return True
+
 
 class EstrategiaInscripciones(ABC):
 

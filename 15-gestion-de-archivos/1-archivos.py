@@ -4,6 +4,16 @@ print(contenido)
 file.close()
 
 
+# class Open:
+#     def __init__(self, ruta, modo):
+#         self.file = open(ruta, modo)
+#
+#     def __enter__(self):
+#         return self.file
+#
+#     def __exit__(self):
+#         self.file.close()
+
 # Context managers (with)
 with open("archivos/archivo1.txt", "r") as file:
     # Lee el archivo entero

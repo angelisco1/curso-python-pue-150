@@ -16,3 +16,11 @@
 2025/07/14_11:06:00 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Lechuga', 'price': 0.55}, a la función post_ingredients con los parámetros args=() kwargs={}
 2025/07/14_11:07:20 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Lechuga', 'price': 0.55}, a la función post_ingredients con los parámetros args=() kwargs={}
 2025/07/14_11:07:20 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Lechuga', 'price': 0.55}, a la función post_ingredients con los parámetros args=() kwargs={}
+2025/07/16_14:06:14 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
+2025/07/16_14:06:14 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
+2025/07/16_14:06:53 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Cebolla', 'price': '0.67'}, a la función post_ingredients con los parámetros args=() kwargs={}
+2025/07/16_14:06:53 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Cebolla', 'price': '0.67'}, a la función post_ingredients con los parámetros args=() kwargs={}
+2025/07/16_14:07:48 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
+2025/07/16_14:07:48 - INFO - logs.py>wrapper>Nº34 - Recibida la petición GET /ingredients con body=None, a la función get_ingredients con los parámetros args=() kwargs={}
+2025/07/16_14:08:00 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Mango', 'price': '1.2'}, a la función post_ingredients con los parámetros args=() kwargs={}
+2025/07/16_14:08:00 - INFO - logs.py>wrapper>Nº34 - Recibida la petición POST /ingredients con body={'name': 'Mango', 'price': '1.2'}, a la función post_ingredients con los parámetros args=() kwargs={}
